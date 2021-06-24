@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.9.130:8848
+        file-extension: properties
+      discovery:
+        server-addr: 192.168.9.130:8848
+    sentinel:
+      transport:
+        dashboard: 192.168.9.130:8080
+        clientIp: 192.168.9.130
+      eager: true
+      enabled: true
+      filter:
+        url-patterns: /**

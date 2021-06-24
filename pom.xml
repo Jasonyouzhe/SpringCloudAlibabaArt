@@ -8,7 +8,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.4.1</version>
-        <relativePath/>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>com.spring.cloud.alibaba.buckets.backend</groupId>
@@ -20,27 +20,41 @@
     <properties>
         <java.version>1.8</java.version>
         <spring.boot.version>2.4.1</spring.boot.version>
+        <spring.cloud.version>2020.0.3</spring.cloud.version>
+        <spring.cloud.alibaba.version>2021.1</spring.cloud.alibaba.version>
     </properties>
     <modules>
         <module>spring-cloud-alibaba-buckets-starter</module>
+        <module>alibaba-buckets-nacos</module>
+        <module>alibaba-buckets-sentinel</module>
     </modules>
     <dependencyManagement>
         <dependencies>
-            <dependency>
+            <!--springboot-->
+<!--            <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-actuator</artifactId>
+                <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring.boot.version}</version>
-            </dependency>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>-->
+            <!--spring cloud-->
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>${spring.boot.version}</version>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>runtime</scope>
             </dependency>
+            <!--spring -cloud alibaba-->
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot</artifactId>
-                <version>${spring.boot.version}</version>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring.cloud.alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
     <build>
@@ -68,6 +82,13 @@
             </activation>
             <properties>
                 <profiles.active>dev</profiles.active>
+                <final.war.name>springCloudAlibabaBuckets.war</final.war.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profiles.active>sentinel</profiles.active>
                 <final.war.name>springCloudAlibabaBuckets.war</final.war.name>
             </properties>
         </profile>

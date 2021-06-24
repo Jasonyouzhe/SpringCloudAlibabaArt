@@ -1,3 +1,5 @@
-#指定服务的端口
-server:
-  port: 8761
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
