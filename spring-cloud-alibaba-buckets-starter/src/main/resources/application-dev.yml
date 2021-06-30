@@ -3,3 +3,9 @@ spring:
     name: nacos-app
 server:
   port: 8762
+
+nacos:
+  app:
+    config:
+      user:
+        name: tom
