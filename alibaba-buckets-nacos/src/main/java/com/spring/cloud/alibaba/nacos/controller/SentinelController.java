@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 public class SentinelController {
 
-    @RequestMapping("/hello")
-    @SentinelResource("hello")
+    @RequestMapping("/h")
+    @SentinelResource("h")
     public String get() {
         try {
             //睡4s，准备降级

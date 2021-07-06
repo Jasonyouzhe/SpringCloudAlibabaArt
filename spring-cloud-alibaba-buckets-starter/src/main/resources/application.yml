@@ -26,13 +26,20 @@ spring:
       filter:
         url-patterns: /**
       datasource:
-        ds1-flow:
+        flow:
           nacos:
             data-type: json
             server-addr: 192.168.9.130:8848 #nacos的访问地址
             groupId: SENTINEL_GROUP #nacos中存储规则的groupId#nacos的访问地址
             dataId: scb-content-service-flow-rules #nacos中存储规则的dataId
             rule-type: flow #该参数是spring cloud alibaba升级到0.2.2之后增加的配置，用来定义存储的规则类型。所有的规则类型可查看枚举类：org.springframework.cloud.alibaba.sentinel.datasource.RuleType
+        degrade:
+          nacos:
+            data-type: json
+            server-addr: 192.168.9.130:8848 #nacos的访问地址
+            groupId: SENTINEL_GROUP #nacos中存储规则的groupId#nacos的访问地址
+            dataId: scb-content-service-degrade-rules #nacos中存储规则的dataId
+            rule-type: degrade #该参数是spring cloud alibaba升级到0.2.2之后增加的配置，用来定义存储的规则类型。所有的规则类型可查看枚举类：org.springframework.cloud.alibaba.sentinel.datasource.RuleType
 
 feign:
   sentinel:

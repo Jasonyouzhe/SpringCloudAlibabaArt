@@ -20,4 +20,18 @@ public class TestController {
         return "error,"+name;
     }
 
+    @RequestMapping("/hello")
+    @SentinelResource(value = "hello", fallback = "testError1")
+    public String get() {
+        try {
+            //睡4s，准备降级
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "sentinel";
+    }
+    public String testError1(Throwable e){
+        return "error,hello";
+    }
 }
