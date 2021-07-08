@@ -26,7 +26,7 @@
     <modules>
         <module>spring-cloud-alibaba-buckets-starter</module>
         <module>alibaba-buckets-nacos</module>
-        <module>alibaba-buckets-sentinel</module>
+        <module>alibaba-buckets-remote</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -87,7 +87,7 @@
             </properties>
         </profile>
         <profile>
-            <id>dev</id>
+            <id>sentinel</id>
             <properties>
                 <profiles.active>sentinel</profiles.active>
                 <final.war.name>springCloudAlibabaBuckets.war</final.war.name>
