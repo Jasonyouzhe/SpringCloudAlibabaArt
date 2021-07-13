@@ -16,18 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class FeignClientRemoteController {
 
-    @Autowired
-    SentinelException sentinelException;
     @GetMapping("/query")
-    @SentinelResource(value = "fr/query",fallback = "testError")
+    @SentinelResource(value = "fr/query",blockHandlerClass = SentinelException.class,
+            blockHandler = "globalHandler")
 //    @SentinelResource(value = "fr/query")
     public UlityResponse test(@RequestParam(value = "name") String name){
         return UlityResponse.ok(name);
     }
-    public UlityResponse testError(String name, Throwable e) {
+/*    public UlityResponse testError(String name, Throwable e) {
         if (e instanceof FlowException) {
             return UlityResponse.error(name,"被限流了");
         }
         return UlityResponse.error(name,"未知错误");
-    }
+    }*/
 }
